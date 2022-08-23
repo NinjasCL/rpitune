@@ -1,0 +1,119 @@
+SMS Ringtone - The RTTTL Format
+Source: https://ozekisms.com/p_2375-sms-ringtone-the-rtttl-format.html
+
+The RTTTL (Ring Tones Text Transfer Language) format can be used to send ringtones to mobile phones. This ringtone can be encoded into nokia and other formats in an easy way. The following webpage gives information on how to convert RTTTL into NOK
+
+
+Example RTTTL ringtone:
+
+Ionian:d=8,o=5,b=240:c,d,e,f,g,a,b,c6;
+
+SMS Ringtone - RTTTL Specification
+
+A RTTTL ringtone can be divided into 3 parts, which are separated using a colon:
+
+    The title.
+    Default parameters, like: default duration, pitch and bpm.
+    The actual songdata.
+
+
+The title
+
+The title of the song, it can have no more than 10 characters.
+The title of the song in the example above is 'Muppets'
+
+Default parameters
+
+The following parameters are supported in this section:
+
+d 	Default duration
+o 	Default octave
+b 	Default bpm (beats per minute)
+
+If these parameters are not specified, the following values will be used:
+
+Duration: 4, Scale: 6 and BPM: 63 ( :d=4;o=6;b=63: )
+
+The following values are valid for the duration parameter:
+
+1 	a full note
+2 	a half note
+4 	a quarter note
+8 	an eighth note
+16 	a sixteenth note
+32 	a thirty-second note
+
+The following values are valid for the octave parameter:
+
+5 	Note A is 440Hz
+6 	Note A is 880Hz
+7 	Note A is 1760Hz
+8 	Note A is 3520Hz
+
+The default BPM can be one of the following values:
+
+25, 28, 31, 35, 40, 45, 50, 56, 63, 70, 80, 90, 100, 112, 125, 140,
+160, 180, 200, 225, 250, 285, 320, 355, 400, 450, 500, 565, 635, 715, 800 and 900.
+
+
+The songdata
+
+The last section of the string contains the actual songdata.
+All the notes are separated by a comma. The notes are encoded as follows:
+
+[duration] note [scale] [special-duration],[duration] note [scale]
+[special-duration], etc...
+
+
+If the optional values 'duration' and/or 'scale' are left blank, the default parameters from the second
+section of the RTTTL string are used.
+
+The following notes can be used in a RTTTL string:
+
+P 	Pause
+C 	Note C
+C# 	Note Cis
+D 	Note D
+D# 	Note Dis
+E 	Note E
+F 	Note F
+F# 	Note Fis
+G 	Note G
+G# 	Note Gis
+A 	Note A
+A# 	Note Ais
+H 	Note H
+
+
+Examples:
+
+8f#5 	1/8th Note Fis, Octave 5
+8d5 	1/8th Note D, Octave 5
+8p 	1/8th Pause
+c5 	Default length, Note C, Octave 5
+8d 	1/8th Note D, Default octave
+
+
+SMS Ringtone - to mobile phones
+
+To send a RTTTL ringtone to a mobile phone, 
+first you need to convert it into a hexadecimal representation, 
+the you can use the SMS:BINARY:RINGTONE format. 
+
+The following gives information on (how to convert rtttl into a nokia hex string).
+
+The RTX Ringtone format can be used to encode ringtone messages to be sent to mobile phones. 
+In order to send an RTX, you can encode it into a hex string 
+the way described on this page.
+
+- `test.rtttl`: Ionian:d=8,o=5,b=240:c,d,e,f,g,a,b,c6;
+- `test.nok`: 024A3A5925BDB9A585B804001928CAE4584D8558598618698718A22C00
+
+You can send this data using the following format:
+
+    MessageType: SMS:BINARY:RINGTONE
+    MessageData: 024A3A5925BDB9A585B804001928CAE4584D8558598618698718A22C00
+
+
+
+

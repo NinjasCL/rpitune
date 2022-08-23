@@ -1,0 +1,82 @@
+# Raspberry Pi RTTTL
+
+This is a simple project for sending Nokia's RTTTL (RingTone Text Transfer Language) to a buzzer in a Raspberry Pi.
+
+This code will compile a single binary that will send
+the frequencies to the buzzer.
+
+## Hardware
+
+- Raspberry Pi Model B
+- *Passive* Buzzer 5v. (Computer Speaker)
+- Cables.
+
+It’s important that your buzzer is a passive one, if it beeps when you feed it with 3.3V then it is not a passive one and this project will not work properly.
+
+## Software
+
+- http://wiringpi.com/
+- https://dietpi.com/ (Debian 11)
+
+## Deps
+
+First must install the dev packages:
+
+```sh
+$ sudo apt install git
+$ sudo dietpi-software install 16
+```
+
+Then install _WiringPi_ dev files:
+
+```sh
+$ git clone https://github.com/WiringPi/WiringPi.git
+$ cd WiringPi
+$ ./build
+```
+
+## Schematics
+
+You can connect the buzzer to the GPIO 13. Or change it in _pin.h_.
+
+image:https://user-images.githubusercontent.com/292738/186222076-072d0dcb-c94f-40f4-b777-69a70756ad91.png[https://linuxhint.com/gpio-pinout-raspberry-pi/]
+
+
+## Song
+
+You can select a song in _song.h_. There is a bunch of sample songs
+too inside `docs/songs`. (Got from https://picaxe.com/rtttl-ringtones-for-tune-command/)
+
+## Compilation
+
+Once you configured your _PIN_ and _SONG_ you can compile with:
+
+```sh
+$ make build
+```
+
+It will generate a new binary named `music`.
+This binary can be executed and will play the _SONG_. 
+Maybe can be used on login? or startup sound?.
+
+## Similar Projects
+
+If you want more complex tunes you can use https://en.wikipedia.org/wiki/Music_Macro_Language[MML] instead of https://en.wikipedia.org/wiki/Ring_Tone_Text_Transfer_Language[RTTTL].
+
+See: https://cubeatsystems.com/tinymml/faq.html
+
+## Composers
+
+- https://adamonsoon.github.io/rtttl-play/
+- https://github.com/zserge/nokia-composer/
+- https://eddmann.com/nokia-composer-web/
+
+## LICENSE
+
+BSD 2-Clause License
+
+## Credits
+
+++++
+Made with <i class="fa fa-heart">&#9829;</i> by <a href="https://ninjas.cl" target="_blank">Ninjas.cl</a>.
+++++
