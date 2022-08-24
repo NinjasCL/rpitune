@@ -65,6 +65,14 @@ If you want more complex tunes you can use https://en.wikipedia.org/wiki/Music_M
 
 See: https://cubeatsystems.com/tinymml/faq.html
 
+### Other Links
+
+- https://www.bristolwatch.com/debian/beep.htm
+- https://computers.tutsplus.com/articles/creating-a-speaker-for-your-raspberry-pi-using-a-piezo-element--mac-59336
+- https://projects-raspberry.com/piezo-ring-tones-with-raspberry-pi/
+- https://docs.circuitpython.org/projects/rtttl/en/latest/
+- https://github.com/james1236/buzzer_music
+
 ## Composers
 
 - https://adamonsoon.github.io/rtttl-play/
