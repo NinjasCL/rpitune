@@ -23,8 +23,7 @@ It’s important that your buzzer is a passive one, if it beeps when you feed it
 First must install the dev packages:
 
 ```sh
-$ sudo apt install git
-$ sudo dietpi-software install 16
+$ sudo apt -y install gcc g++ make automake git
 ```
 
 Then install _WiringPi_ dev files:
