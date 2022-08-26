@@ -156,10 +156,17 @@ void play(char *song) {
     }
 
     if (freq) {
-      softToneWrite(PIN, &freq);
+      int *ptr_freq = &freq;
+      int val_freq = *ptr_freq;
+
+      int *ptr_silence = &silence;
+      int val_silence = *ptr_silence;
+
+      softToneWrite(PIN, val_freq);
       delay(ms * 7 / 8);
-      softToneWrite(PIN, &silence);
+      softToneWrite(PIN, val_silence);
       delay(ms / 8);
+
     } else {
       delay(ms);
     }
@@ -167,6 +174,6 @@ void play(char *song) {
 }
 
 void setup(void) {
-    wiringPiSetup();
+    wiringPiSetupGpio();
     softToneCreate(PIN);
 }

@@ -1,7 +1,8 @@
 .PHONY: build clean
 
 b build:
-	cc -o music main.c -lwiringPi -lpthread
+	cc -o tune main.c player.c -lwiringPi -lpthread
+	mv ./tune ..
 
 c clean:
-	rm music
+	rm ./tune

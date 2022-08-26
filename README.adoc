@@ -1,4 +1,4 @@
-# Raspberry Pi RTTTL
+# Raspberry Pi Music Tunes with RTTTL
 
 This is a simple project for sending Nokia's RTTTL (RingTone Text Transfer Language) to a buzzer in a Raspberry Pi.
 
@@ -34,17 +34,24 @@ $ cd WiringPi
 $ ./build
 ```
 
+Make sure to add your user to the `gpio` group.
+
+```sh
+$ sudo usermod -aG gpio <username>
+```
+
 ## Schematics
 
-You can connect the buzzer to the GPIO 13. Or change it in _pin.h_.
+You can connect the buzzer to the GPIO 4 (positive) and the other to the ground. Or change it in _pin.h_.
 
-image:https://user-images.githubusercontent.com/292738/186222076-072d0dcb-c94f-40f4-b777-69a70756ad91.png[https://linuxhint.com/gpio-pinout-raspberry-pi/]
+image:https://user-images.githubusercontent.com/292738/186971780-e5cdf7a5-927c-4838-ba56-de2199d0b36a.png[https://www.circuitbasics.com/how-to-use-buzzers-with-raspberry-pi/]
 
 
 ## Song
 
 You can select a song in _song.h_. There is a bunch of sample songs
-too inside `docs/songs`. (Got from https://picaxe.com/rtttl-ringtones-for-tune-command/)
+too inside `docs/songs`. (Got from https://picaxe.com/rtttl-ringtones-for-tune-command/). This song will play if you
+do not give any arguments to the program.
 
 ## Compilation
 
@@ -54,9 +61,22 @@ Once you configured your _PIN_ and _SONG_ you can compile with:
 $ make build
 ```
 
-It will generate a new binary named `music`.
+It will generate a new binary named `tune`.
 This binary can be executed and will play the _SONG_. 
 Maybe can be used on login? or startup sound?.
+
+A binary is included in this repo if you want to avoid
+compilation.
+
+## Play
+
+Now you can play using the command `./tune`.
+
+Example:
+
+```sh
+$ cat docs/songs/mix1/adams.txt | xargs ./tune
+```
 
 ## Similar Projects
 
@@ -71,6 +91,8 @@ See: https://cubeatsystems.com/tinymml/faq.html
 - https://projects-raspberry.com/piezo-ring-tones-with-raspberry-pi/
 - https://docs.circuitpython.org/projects/rtttl/en/latest/
 - https://github.com/james1236/buzzer_music
+- https://github.com/joan2937/pigpio/
+- http://www.airspayce.com/mikem/bcm2835/
 
 ## Composers
 
